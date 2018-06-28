@@ -21,6 +21,7 @@ tr:nth-child(even) {
 }</style><table><tr><th>Code</th><th>Hex</th><th>Char</th></tr>`;
 var j = 0;
 function test(){
+if(!document.body)return window.requestAnimationFrame(test);
 if(j<5000||document.body.getBoundingClientRect().height<scrollY+5000){var t = "";
 for(var i = 0;i<1000;i++){
 t+=`<tr><th>${j}</th><th>0x${j.toString(16)}</th><th>${String.fromCharCode(j)}</th></tr>`;
