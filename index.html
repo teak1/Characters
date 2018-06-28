@@ -4,6 +4,7 @@
 Characters list
 </title>
 <script>
+
 var table = `<style>table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -18,20 +19,26 @@ td, th {
 
 tr:nth-child(even) {
     background-color: #dddddd;
-}</style><table><tr><th>Code</th><th>Hex</th><th>Char</th><th>Code</th><th>Hex</th><th>Char</th></tr>`;
+}</style><table id=head><tr><th>Code</th><th>Hex</th><th>Char</th><th>Code</th><th>Hex</th><th>Char</th></tr></table><table>`;
 var j = 0;
 function test(){
+if(document.body.innerHTML==="")document.body.innerHTML=table;
+if(document.body)document.getElementById("head").setAttribute("style",`position:absolute;top:${scrollY}px;left:0px;width:100%;background-color:white;`);
 if(!document.body)return window.requestAnimationFrame(test);
-if(j<5000||document.body.getBoundingClientRect().height<scrollY+5000){var t = "";
+if(j<5000||document.body.getBoundingClientRect().height<scrollY+5000){
+    table="<table>";
+    var t = "";
 for(var i = 0;i<1000;i++){
 t+=`<tr><th>${j}</th><th>0x${j.toString(16)}</th><th>${String.fromCharCode(j)}</th><th>${j}</th><th>0x${(j+1).toString(16)}</th><th>${String.fromCharCode(j+1)}</th></tr>`;
-j+=2;}
+j+=2;
+}
 table+=t;
-document.body.innerHTML=table+"</table>";
-                                     }
+document.body.innerHTML+=table+"</table>";
+}
 window.requestAnimationFrame(test);
 }
 test();
+
 </script>
 </head>
 <body>
