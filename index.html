@@ -23,7 +23,6 @@ tr:nth-child(even) {
 var j = 0;
 function test(){
 if(!document.body)return window.requestAnimationFrame(test);
-if(document.body.innerHTML==="")document.body.innerHTML=table;
 if(document.getElementById("title"))document.getElementById("head").setAttribute("style",`position:absolute;top:${scrollY}px;left:0px;width:100%;background-color:white;`);
 if(j<5000||document.body.getBoundingClientRect().height<scrollY+5000){
     table="<table>";
@@ -37,7 +36,10 @@ document.body.innerHTML+=table+"</table>";
 }
 window.requestAnimationFrame(test);
 }
+window.onload=function(){
+document.body.innerHTML=table;
 test();
+}
 
 </script>
 </head>
