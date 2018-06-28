@@ -24,8 +24,8 @@ function test(){
 if(!document.body)return window.requestAnimationFrame(test);
 if(j<5000||document.body.getBoundingClientRect().height<scrollY+5000){var t = "";
 for(var i = 0;i<1000;i++){
-t+=`<tr><th>${j}</th><th>0x${j.toString(16)}</th><th>${String.fromCharCode(j)}</th></tr>`;
-j++;}
+t+=`<tr><th>${j}</th><th>0x${j.toString(16)}</th><th>${String.fromCharCode(j)}</th></tr><tr><th>${j}</th><th>0x${(j+1).toString(16)}</th><th>${String.fromCharCode(j+1)}</th></tr>`;
+j+=2;}
 table+=t;
 document.body.innerHTML=table+"</table>";
                                      }
